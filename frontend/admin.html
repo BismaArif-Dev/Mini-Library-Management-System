@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | CampusShelf</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a class="logo" href="index.html" aria-label="CampusShelf home">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+        </svg>
+        CampusShelf
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="catalog.html">Catalog</a></li>
+        <li><a class="nav-link" href="admin.html" aria-current="page">Dashboard</a></li>
+      </ul>
+      <div class="navbar__actions"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container page-head">
+      <p class="label">Dashboard</p>
+      <h1>Manage the library</h1>
+    </div>
+
+    <div class="container">
+      <div class="stats">
+        <div class="stat"><span class="stat__num" id="a-total">0</span><span class="stat__label label">Books</span></div>
+        <div class="stat"><span class="stat__num" id="a-issued">0</span><span class="stat__label label">Currently issued</span></div>
+        <div class="stat"><span class="stat__num" id="a-overdue">0</span><span class="stat__label label">Overdue</span></div>
+        <div class="stat"><span class="stat__num" id="a-members">0</span><span class="stat__label label">Members</span></div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Dashboard sections">
+        <button class="tab" role="tab" id="tab-books" data-tab="books" aria-selected="true" aria-controls="panel-books" type="button">Books</button>
+        <button class="tab" role="tab" id="tab-members" data-tab="members" aria-selected="false" aria-controls="panel-members" tabindex="-1" type="button">Members</button>
+        <button class="tab" role="tab" id="tab-issue" data-tab="issue" aria-selected="false" aria-controls="panel-issue" tabindex="-1" type="button">Issue &amp; Return</button>
+      </div>
+
+      <!-- Books -->
+      <section class="tabpanel" id="panel-books" role="tabpanel" aria-labelledby="tab-books">
+        <div class="toolbar">
+          <div class="search toolbar__search">
+            <label class="visually-hidden" for="bookSearch">Search books</label>
+            <input id="bookSearch" type="search" placeholder="Search by title, author or ID" autocomplete="off">
+          </div>
+          <p class="label" id="bookCount"></p>
+          <button class="btn btn-primary" id="addBookBtn" type="button">Add book</button>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>ID</th><th>Title</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="booksBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Members -->
+      <section class="tabpanel" id="panel-members" role="tabpanel" aria-labelledby="tab-members" hidden>
+        <div class="toolbar">
+          <p class="label" id="memCount"></p>
+          <button class="btn btn-primary" id="addMemberBtn" type="button">Add member</button>
+        </div>
+        <div class="table-wrap">
+          <table class="table">
+            <thead><tr><th>ID</th><th>Name</th><th>Type</th><th>Borrowed</th><th>Detail</th><th>Actions</th></tr></thead>
+            <tbody id="membersBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Issue and Return -->
+      <section class="tabpanel" id="panel-issue" role="tabpanel" aria-labelledby="tab-issue" hidden>
+        <div class="issue-grid">
+          <div class="form-card">
+            <h2>Issue a book</h2>
+            <p>Students can borrow 3 books, teachers 5. The limit is checked automatically.</p>
+            <div class="form-grid">
+              <div class="field field--full">
+                <label for="issueMember">Member</label>
+                <select class="input" id="issueMember"></select>
+              </div>
+              <div class="field field--full" id="issueInfo"></div>
+              <div class="field field--full">
+                <label for="issueBook">Available book</label>
+                <select class="input" id="issueBook"></select>
+              </div>
+            </div>
+            <p class="tray__msg is-warn" id="issueMsg" role="status"></p>
+            <button class="btn btn-primary" id="issueBtn" type="button">Issue book</button>
+          </div>
+          <div>
+            <div class="section-head"><h2>Currently borrowed</h2></div>
+            <div id="loanList"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Book dialog -->
+  <dialog class="dialog dialog--wide" id="bookDlg" aria-labelledby="bookDlgTitle">
+    <h2 id="bookDlgTitle">Add a book</h2>
+    <form id="bookForm" novalidate>
+      <div class="form-grid">
+        <div class="field field--full">
+          <label for="bTitle">Title <span class="req">*</span></label>
+          <input class="input" id="bTitle" type="text" maxlength="200" autocomplete="off">
+          <span class="field__err" id="bTitleErr"></span>
+        </div>
+        <div class="field field--full">
+          <label for="bAuthor">Author <span class="req">*</span></label>
+          <input class="input" id="bAuthor" type="text" maxlength="150" autocomplete="off">
+          <span class="field__err" id="bAuthorErr"></span>
+        </div>
+        <div class="field">
+          <label for="bCategory">Category</label>
+          <input class="input" id="bCategory" type="text" list="catList" maxlength="60" autocomplete="off" placeholder="e.g. Fiction">
+          <datalist id="catList"></datalist>
+        </div>
+        <div class="field">
+          <label for="bYear">Year</label>
+          <input class="input" id="bYear" type="number" min="1000" max="2100">
+        </div>
+        <div class="field field--full">
+          <label for="bDesc">Short description</label>
+          <textarea class="input" id="bDesc" maxlength="1000"></textarea>
+        </div>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn-secondary" id="bookCancel" type="button">Cancel</button>
+        <button class="btn btn-primary" id="bSubmit" type="submit">Add book</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Member dialog -->
+  <dialog class="dialog dialog--wide" id="memberDlg" aria-labelledby="memberDlgTitle">
+    <h2 id="memberDlgTitle">Add a member</h2>
+    <form id="memberForm" novalidate>
+      <div class="form-grid">
+        <div class="field field--full">
+          <label for="mType">Member type</label>
+          <select class="input" id="mType">
+            <option value="student">Student (3 books, 14 days)</option>
+            <option value="teacher">Teacher (5 books, 30 days)</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="mName">Full name <span class="req">*</span></label>
+          <input class="input" id="mName" type="text" maxlength="100" autocomplete="off">
+          <span class="field__err" id="mNameErr"></span>
+        </div>
+        <div class="field field--full">
+          <label for="mEmail">Email <span class="req">*</span></label>
+          <input class="input" id="mEmail" type="email" maxlength="120" autocomplete="off">
+          <span class="field__err" id="mEmailErr"></span>
+        </div>
+        <div class="field field--full">
+          <label for="mDetail">Department or program</label>
+          <input class="input" id="mDetail" type="text" maxlength="150" autocomplete="off" placeholder="e.g. BS Computer Science">
+        </div>
+      </div>
+      <div class="dialog__actions">
+        <button class="btn btn-secondary" id="memberCancel" type="button">Cancel</button>
+        <button class="btn btn-primary" id="mSubmit" type="submit">Add member</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Delete confirm -->
+  <dialog class="dialog" id="delDlg" aria-labelledby="delTitle">
+    <h2 id="delTitle">Delete this item?</h2>
+    <p id="delText"></p>
+    <div class="dialog__actions">
+      <button class="btn btn-secondary" id="delCancel" type="button">Cancel</button>
+      <button class="btn btn-primary btn-danger-solid" id="delOk" type="button">Yes, delete</button>
+    </div>
+  </dialog>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="logo" href="index.html">CampusShelf</a>
+        <p style="margin-top:8px">Students: 3 books, 14 days. Teachers: 5 books, 30 days.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="admin.html">Dashboard</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+    <script src="js/motion.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

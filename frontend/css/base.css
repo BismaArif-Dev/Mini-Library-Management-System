@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&display=swap");
+
+/* Reset */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;
+  background-color:var(--bg);
+  background-image:var(--grain);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:var(--fs-16);
+  line-height:var(--lh-body);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img,svg{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--primary);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--primary-hover)}
+::selection{background:var(--sel);color:var(--text)}
+
+/* Headings */
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:600;
+  line-height:var(--lh-heading);
+  letter-spacing:-0.015em;
+  margin:0 0 var(--s-4);
+  text-wrap:balance;
+}
+h1{font-size:var(--fs-64);line-height:var(--lh-tight);letter-spacing:-0.025em}
+h2{font-size:var(--fs-48)}
+h3{font-size:var(--fs-32)}
+h4{font-size:var(--fs-24)}
+h1 em,h2 em{font-style:italic;font-weight:500;color:var(--primary)}
+p{margin:0 0 var(--s-4);max-width:var(--measure);text-wrap:pretty}
+
+/* Small caps label with a brass rule */
+.label{
+  font-size:var(--fs-12);
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.label--rule{
+  display:inline-flex;align-items:center;gap:var(--s-3);
+  color:var(--accent-text);
+}
+.label--rule::before{content:"";width:28px;height:1px;background:var(--accent)}
+
+/* Layout */
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s-5)}
+.section{padding-block:var(--s-8)}
+@media (max-width:640px){.section{padding-block:var(--s-7)}}
+
+/* Focus ring (keyboard users) */
+:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+  border-radius:var(--r-sm);
+}
+
+/* Utilities */
+.visually-hidden{
+  position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;
+}
+.skip-link{
+  position:absolute;left:var(--s-4);top:-100px;
+  background:var(--primary);color:var(--on-primary);
+  padding:var(--s-2) var(--s-4);border-radius:var(--r-md);z-index:100;
+}
+.skip-link:focus{top:var(--s-4)}
