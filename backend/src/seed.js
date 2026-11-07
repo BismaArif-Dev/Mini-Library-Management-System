@@ -45,10 +45,24 @@ const seedBooks = [
 ];
 
 const seedMembers = [
-  { id: 'S001', type: 'student', name: 'Ayesha Khan', email: 'ayesha@campus.edu', detail: 'BS Computer Science' },
-  { id: 'S002', type: 'student', name: 'Hamza Ali', email: 'hamza@campus.edu', detail: 'BS Software Engineering' },
-  { id: 'T001', type: 'teacher', name: 'Dr. Sara Ahmed', email: 'sara@campus.edu', detail: 'Department of Computer Science' },
-  { id: 'T002', type: 'teacher', name: 'Prof. Imran Malik', email: 'imran@campus.edu', detail: 'Department of Mathematics' },
+  // ---------- Students (10) ----------
+  { id: "S001", type: "student", name: "Ayesha Khan", email: "ayesha.khan@campus.edu", detail: "BS Computer Science" },
+  { id: "S002", type: "student", name: "Hamza Ali", email: "hamza.ali@campus.edu", detail: "BS Software Engineering" },
+  { id: "S003", type: "student", name: "Fatima Zahra", email: "fatima.zahra@campus.edu", detail: "BS Mathematics" },
+  { id: "S004", type: "student", name: "Usman Tariq", email: "usman.tariq@campus.edu", detail: "BS Computer Science" },
+  { id: "S005", type: "student", name: "Zainab Bukhari", email: "zainab.bukhari@campus.edu", detail: "BS Psychology" },
+  { id: "S006", type: "student", name: "Ahmed Raza", email: "ahmed.raza@campus.edu", detail: "BS Software Engineering" },
+  { id: "S007", type: "student", name: "Maryam Iqbal", email: "maryam.iqbal@campus.edu", detail: "BS English Literature" },
+  { id: "S008", type: "student", name: "Bilal Hussain", email: "bilal.hussain@campus.edu", detail: "BS Physics" },
+  { id: "S009", type: "student", name: "Hira Noor", email: "hira.noor@campus.edu", detail: "BS Computer Science" },
+  { id: "S010", type: "student", name: "Omar Farooq", email: "omar.farooq@campus.edu", detail: "BS Mathematics" },
+
+  // ---------- Teachers (5) ----------
+  { id: "T001", type: "teacher", name: "Dr. Sara Ahmed", email: "sara.ahmed@campus.edu", detail: "Department of Computer Science" },
+  { id: "T002", type: "teacher", name: "Prof. Imran Malik", email: "imran.malik@campus.edu", detail: "Department of Mathematics" },
+  { id: "T003", type: "teacher", name: "Dr. Nadia Hussain", email: "nadia.hussain@campus.edu", detail: "Department of Psychology" },
+  { id: "T004", type: "teacher", name: "Prof. Tariq Mehmood", email: "tariq.mehmood@campus.edu", detail: "Department of English" },
+  { id: "T005", type: "teacher", name: "Dr. Farhan Siddiqui", email: "farhan.siddiqui@campus.edu", detail: "Department of Physics" },
 ];
 
 module.exports = { seedBooks, seedMembers };
