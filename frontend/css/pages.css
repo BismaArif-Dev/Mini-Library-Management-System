@@ -896,4 +896,31 @@ button.nav-link{background:transparent;border:0;font-family:inherit;cursor:point
 }
 @media (prefers-reduced-motion:reduce){
   .stage__label,.stage__title,.stage__bottom{animation:none}
+}/* ---------- Search box: readable text (hero aur catalog dono) ---------- */
+.search input{
+  color:var(--text);
+  caret-color:var(--primary);
 }
+.search input::placeholder{
+  color:var(--text-muted);
+  opacity:1;
+}
+.search input::-webkit-search-cancel-button{cursor:pointer}
+
+/* Browser ki autofill ka peela rang bhi theek rahe */
+.search input:-webkit-autofill{
+  -webkit-text-fill-color:var(--text);
+  box-shadow:0 0 0 40px var(--surface) inset;
+}
+
+/* Hero ke search box ko saaf, roshan background do */
+.stage .search{
+  background:#FCFAF5;
+  border-color:rgba(226,190,124,.55);
+}
+.stage .search:focus-within{
+  border-color:#E2BE7C;
+  box-shadow:0 0 0 3px rgba(226,190,124,.28);
+}
+.stage .search input{color:#2A241C}
+.stage .search input::placeholder{color:#6B604E}
