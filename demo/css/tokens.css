@@ -1,0 +1,74 @@
+:root {
+  /* Parchment neutrals */
+  --paper-50:#FCFAF5; --paper-100:#F6F0E4; --paper-200:#ECE3D0; --paper-300:#DBCFB6;
+  --paper-400:#B8A88A; --paper-500:#8A7B62; --paper-600:#5F5444; --paper-700:#40382D;
+  --paper-800:#2A241C; --paper-900:#1A1611;
+
+  /* Brand: library green */
+  --green-100:#DCEBE4; --green-600:#25594A; --green-700:#174236;
+
+  /* Accent: brass */
+  --brass-100:#F1E4C3; --brass-500:#B8893A; --brass-700:#8A6420;
+
+  /* Warm warning (due soon) */
+  --amber-500:#C8672B; --amber-700:#A94A18;
+
+  /* Semantic */
+  --success:#2E7D4F; --warning:#B7791F; --error:#B3261E; --info:#2B5C8A;
+
+  /* Roles (light) */
+  --bg:var(--paper-100); --surface:var(--paper-50); --surface-2:var(--paper-200);
+  --text:var(--paper-800); --text-muted:var(--paper-600); --border:var(--paper-300);
+  --primary:var(--green-700); --primary-hover:var(--green-600); --on-primary:#FFFFFF;
+  --accent:var(--brass-500); --accent-text:var(--brass-700);
+  --focus:#2B5C8A;
+  --sel:#E9D7A8;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .16 0 0 0 0 .13 0 0 0 0 .1 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  /* Type */
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs-12:.75rem; --fs-14:.875rem; --fs-16:1rem; --fs-18:1.125rem; --fs-20:1.25rem;
+  --fs-24:1.5rem; --fs-32:clamp(1.75rem,3vw,2rem); --fs-48:clamp(2.25rem,5vw,3rem);
+  --fs-64:clamp(2.75rem,7vw,4rem);
+  --lh-tight:1.08; --lh-heading:1.2; --lh-body:1.65;
+  --measure:68ch;
+
+  /* Spacing (8px grid) */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:24px; --s-6:32px;
+  --s-7:48px; --s-8:64px; --s-9:96px;
+
+  /* Shape */
+  --r-sm:4px; --r-md:8px; --r-lg:12px; --r-xl:20px; --r-pill:999px;
+
+  /* Elevation (warm tinted) */
+  --e-1:0 1px 2px rgba(42,36,28,.07);
+  --e-2:0 4px 14px rgba(42,36,28,.10);
+  --e-3:0 18px 44px rgba(42,36,28,.18);
+
+  /* Glass (navbar, tray, modal only) */
+  --glass-bg:rgba(252,250,245,.76);
+  --glass-blur:blur(14px) saturate(140%);
+  --glass-border:1px solid rgba(26,22,17,.09);
+
+  /* Motion */
+  --dur-fast:120ms; --dur-base:200ms; --dur-slow:320ms;
+  --ease-out:cubic-bezier(.2,.7,.2,1);
+
+  /* Layout */
+  --container:1200px; --gutter:clamp(16px,4vw,32px);
+}
+
+[data-theme="dark"]{
+  --bg:#14110D; --surface:#1D1914; --surface-2:#28221B;
+  --text:#EFE7D6; --text-muted:#BBAE96; --border:#3B3328;
+  --primary:#7CC4A4; --primary-hover:#98D4B9; --on-primary:#0E1F18;
+  --accent:#D4A95A; --accent-text:#E2BE7C;
+  --sel:#5A4719;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .88 0 0 0 0 .75 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --glass-bg:rgba(29,25,20,.76); --glass-border:1px solid rgba(239,231,214,.10);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}

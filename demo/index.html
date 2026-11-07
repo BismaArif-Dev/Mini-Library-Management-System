@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CampusShelf | Campus Library</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a class="logo" href="index.html" aria-label="CampusShelf home">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+        </svg>
+        CampusShelf
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html" aria-current="page">Home</a></li>
+        <li><a class="nav-link" href="catalog.html">Catalog</a></li>
+      </ul>
+      <div class="navbar__actions"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero stage -->
+    <section class="stage">
+      <div class="container stage__inner">
+        <p class="label label--rule stage__label">Campus library</p>
+        <h1 class="stage__title">Find your <em>next read.</em></h1>
+
+        <div class="hero__stack" id="heroStack"></div>
+
+        <div class="stage__bottom">
+          <p class="hero__lead">Search the shelves and see what is available right now. Students and teachers can ask the librarian to issue any book they find here.</p>
+          <form class="search" id="heroSearch" role="search">
+            <label class="visually-hidden" for="q">Search books or authors</label>
+            <input id="q" type="search" placeholder="Search by title or author" autocomplete="off"
+                   role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+            <button class="btn btn-primary" type="submit">Search</button>
+            <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+          </form>
+          <p class="hero__hint">Try: Clean Code, Orwell, algorithms</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="stats reveal">
+        <div class="stat"><span class="stat__num" id="stat-total">0</span><span class="stat__label label">Books in library</span></div>
+        <div class="stat"><span class="stat__num" id="stat-available">0</span><span class="stat__label label">Available now</span></div>
+        <div class="stat"><span class="stat__num" id="stat-issued">0</span><span class="stat__label label">Currently borrowed</span></div>
+        <div class="stat"><span class="stat__num" id="stat-members">0</span><span class="stat__label label">Members</span></div>
+      </div>
+    </div>
+
+    <section class="container section reveal">
+      <div class="section-head">
+        <h2>On the shelf <em>now</em></h2>
+        <div class="section-head__tools">
+          <button class="icon-btn" id="shelfPrev" type="button" aria-label="Scroll shelf left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="icon-btn" id="shelfNext" type="button" aria-label="Scroll shelf right">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <a href="catalog.html">View all books</a>
+        </div>
+      </div>
+      <div class="shelf" id="shelf"><p>Loading books...</p></div>
+    </section>
+
+    <section class="container section reveal">
+      <div class="section-head"><h2>Browse by <em>category</em></h2></div>
+      <ul class="cat-list" id="catList"></ul>
+    </section>
+
+    <section class="container section reveal">
+      <div class="section-head"><h2>How borrowing <em>works</em></h2></div>
+      <ol class="steps">
+        <li class="step"><span class="step__num">1</span><h3>Find a book</h3><p>Search by title or author, or browse a category, and check that it is available.</p></li>
+        <li class="step"><span class="step__num">2</span><h3>Visit the library desk</h3><p>Tell the librarian which book you would like to borrow.</p></li>
+        <li class="step"><span class="step__num">3</span><h3>Borrow and return</h3><p>The librarian issues it and sets your due date. Return it any time before then.</p></li>
+      </ol>
+      <div class="rules">
+        <div><strong>Students</strong><p>Up to 3 books for 14 days.</p></div>
+        <div><strong>Teachers</strong><p>Up to 5 books for 30 days.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="logo" href="index.html">CampusShelf</a>
+        <p style="margin-top:8px">Students: 3 books, 14 days. Teachers: 5 books, 30 days.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="login.html">Staff login</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/hero3d.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

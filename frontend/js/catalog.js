@@ -47,10 +47,12 @@ function cardHTML(b) {
     ? `<span class="card__due">Expected back ${fmtDate(b.dueDate)}</span>`
     : '';
   return `
-    <article class="card ${issued ? 'card--issued' : ''}">
-      ${coverHTML(b)}
+    <article class="card ${issued ? 'card--issued' : ''}" data-id="${esc(b.id)}">
+      <button class="card__open" type="button" data-open="${esc(b.id)}" aria-label="View details for ${esc(b.title)}">
+        ${coverHTML(b)}
+      </button>
       <div class="card__body">
-        <h3 class="card__title">${esc(b.title)}</h3>
+        <h3 class="card__title"><button class="linklike" type="button" data-open="${esc(b.id)}">${esc(b.title)}</button></h3>
         <p class="card__meta">${esc(b.author)}${b.year ? ' · ' + esc(b.year) : ''}</p>
         <div class="card__row">${badgeHTML(b)}${note}</div>
       </div>
@@ -63,6 +65,7 @@ function render() {
   if (!list.length) {
     $('grid').innerHTML = `
       <div class="empty">
+        <img class="empty__img" src="img/empty-books.svg" alt="" width="240" height="180">
         <h3>No books found</h3>
         <p>Try a different word, or clear the filters.</p>
         <button class="btn btn-secondary" id="clearBtn" type="button">Clear filters</button>
@@ -99,6 +102,23 @@ function drawChips(categories) {
     </button>`).join('');
 }
 
+function openDetail(id) {
+  const dlg = $('detailDlg');
+  const b = allBooks.find(x => x.id === id);
+  if (!dlg || !b) return;
+  const issued = b.status !== 'Available';
+  $('dCover').innerHTML = coverHTML(b);
+  $('dTitle').textContent = b.title;
+  $('dAuthor').textContent = b.author + (b.year ? ' · ' + b.year : '');
+  $('dCat').textContent = b.category;
+  $('dDesc').textContent = b.description || 'No description yet.';
+  $('dStatus').innerHTML = badgeHTML(b);
+  $('dNote').textContent = issued && b.dueDate
+    ? 'Expected back on ' + new Date(b.dueDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'long' }) + '.'
+    : 'Ask the librarian at the desk to borrow this book.';
+  dlg.showModal();
+}
+
 async function init() {
   readURL();
   try { drawChips(await api.categories()); } catch { drawChips([]); }
@@ -127,6 +147,8 @@ async function init() {
   $('sort').addEventListener('change', e => { sortBy = e.target.value; render(); });
 
   $('grid').addEventListener('click', e => {
+    const open = e.target.closest('[data-open]');
+    if (open) { openDetail(open.dataset.open); return; }
     if (e.target.closest('#clearBtn')) {
       filters.search = ''; filters.category = ''; filters.available = '';
       $('q').value = ''; $('availOnly').checked = false;
@@ -135,6 +157,14 @@ async function init() {
       load();
     }
   });
+
+  // Detail khidki: agar HTML mein na ho to bhi catalog chalta rahe
+  const dlg = $('detailDlg');
+  if (dlg) {
+    const closeBtn = $('dClose');
+    if (closeBtn) closeBtn.addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  }
 
   load();
 }

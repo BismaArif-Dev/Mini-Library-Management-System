@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catalog | CampusShelf</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a class="logo" href="index.html" aria-label="CampusShelf home">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+        </svg>
+        CampusShelf
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="catalog.html" aria-current="page">Catalog</a></li>
+      </ul>
+      <div class="navbar__actions"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container page-head">
+      <p class="label">Catalog</p>
+      <h1>Browse the collection</h1>
+    </div>
+
+    <div class="filters">
+      <div class="container">
+        <div class="filters__top">
+          <form class="search" id="searchForm" role="search">
+            <label class="visually-hidden" for="q">Search books or authors</label>
+            <input id="q" type="search" placeholder="Search by title or author" autocomplete="off">
+          </form>
+          <label class="toggle">
+            <input type="checkbox" id="availOnly"> Available only
+          </label>
+          <label class="visually-hidden" for="sort">Sort books</label>
+          <select class="select" id="sort">
+            <option value="title">Sort: Title A-Z</option>
+            <option value="author">Sort: Author A-Z</option>
+            <option value="newest">Sort: Newest first</option>
+          </select>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="results-line">
+        <p class="label" id="count" aria-live="polite">Loading...</p>
+      </div>
+      <div class="grid-books" id="grid"></div>
+    </div>
+  </main>
+  <dialog class="dialog dialog--detail" id="detailDlg" aria-labelledby="dTitle">
+    <div class="detail">
+      <div class="detail__cover" id="dCover"></div>
+      <div class="detail__body">
+        <p class="label" id="dCat"></p>
+        <h2 id="dTitle"></h2>
+        <p class="detail__author" id="dAuthor"></p>
+        <p id="dStatus"></p>
+        <p id="dDesc"></p>
+        <p class="detail__note" id="dNote"></p>
+        <button class="btn btn-secondary" id="dClose" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="logo" href="index.html">CampusShelf</a>
+        <p style="margin-top:8px">Students: 3 books, 14 days. Teachers: 5 books, 30 days.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="login.html">Staff login</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+    <script src="js/motion.js"></script>
+  <script src="js/catalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff login | CampusShelf</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a class="logo" href="index.html" aria-label="CampusShelf home">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+        </svg>
+        CampusShelf
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="catalog.html">Catalog</a></li>
+      </ul>
+      <div class="navbar__actions"></div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="login">
+      <div class="login__intro">
+        <p class="label">Staff only</p>
+        <h1>Library administration</h1>
+        <p>Sign in to add or edit books and members, and to issue and return books.</p>
+                <img class="login__img" src="img/login-desk.svg" alt="" width="300" height="220">
+      </div>
+
+      <div class="login-card">
+        <h2>Sign in</h2>
+        <form id="loginForm" novalidate>
+
+          <div class="lock" id="lockBox" hidden>
+            <p class="lock__title" role="alert">Too many failed attempts</p>
+            <p class="lock__time" aria-live="polite">You can try again in <strong id="lockTime">15 minutes</strong></p>
+            <div class="lock__track"><div class="lock__bar" id="lockBar"></div></div>
+            <p class="lock__note">Sign in is paused to protect the account.</p>
+          </div>
+
+          <p class="form-error" id="formError" role="alert" hidden></p>
+
+          <div class="field">
+            <label for="username">Username</label>
+            <input class="input" id="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false">
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="pw-wrap">
+              <input class="input" id="password" type="password" autocomplete="current-password">
+              <button class="pw-toggle" id="showPw" type="button" aria-label="Show password" aria-pressed="false">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button class="btn btn-primary" id="loginBtn" type="submit">Sign in</button>
+        </form>
+        <a class="login-card__back" href="index.html">Back to the library</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="logo" href="index.html">CampusShelf</a>
+        <p style="margin-top:8px">Students: 3 books, 14 days. Teachers: 5 books, 30 days.</p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="login.html">Staff login</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+    <script src="js/motion.js"></script>
+  <script src="js/login.js"></script>
+</body>

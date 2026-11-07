@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CampusShelf | Campus Library</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -30,23 +31,30 @@
   </header>
 
   <main id="main">
-    <section class="hero container">
-      <div class="hero__text">
-               <p class="label label--rule">Campus library</p>
-                <h1>Find your <em>next read.</em></h1>
-        <p class="hero__lead">Search the shelves and see what is available right now. Students and teachers can ask the librarian to issue any book they find here.</p>
-        <form class="search" id="heroSearch" role="search">
-          <label class="visually-hidden" for="q">Search books or authors</label>
-          <input id="q" type="search" placeholder="Search by title or author" autocomplete="off">
-          <button class="btn btn-primary" type="submit">Search</button>
-        </form>
-        <p class="hero__hint">Try: Clean Code, Orwell, algorithms</p>
+    <!-- Hero stage -->
+    <section class="stage">
+      <div class="container stage__inner">
+        <p class="label label--rule stage__label">Campus library</p>
+        <h1 class="stage__title">Find your <em>next read.</em></h1>
+
+        <div class="hero__stack" id="heroStack"></div>
+
+        <div class="stage__bottom">
+          <p class="hero__lead">Search the shelves and see what is available right now. Students and teachers can ask the librarian to issue any book they find here.</p>
+          <form class="search" id="heroSearch" role="search">
+            <label class="visually-hidden" for="q">Search books or authors</label>
+            <input id="q" type="search" placeholder="Search by title or author" autocomplete="off"
+                   role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list">
+            <button class="btn btn-primary" type="submit">Search</button>
+            <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+          </form>
+          <p class="hero__hint">Try: Clean Code, Orwell, algorithms</p>
+        </div>
       </div>
-      <div class="hero__stack" id="heroStack" aria-hidden="true"></div>
     </section>
 
     <div class="container">
-            <div class="stats reveal"></div>
+      <div class="stats reveal">
         <div class="stat"><span class="stat__num" id="stat-total">0</span><span class="stat__label label">Books in library</span></div>
         <div class="stat"><span class="stat__num" id="stat-available">0</span><span class="stat__label label">Available now</span></div>
         <div class="stat"><span class="stat__num" id="stat-issued">0</span><span class="stat__label label">Currently borrowed</span></div>
@@ -54,21 +62,29 @@
       </div>
     </div>
 
-        <section class="container section reveal"></section>
+    <section class="container section reveal">
       <div class="section-head">
-                <h2>On the shelf <em>now</em></h2>
-        <a href="catalog.html">View all books</a>
+        <h2>On the shelf <em>now</em></h2>
+        <div class="section-head__tools">
+          <button class="icon-btn" id="shelfPrev" type="button" aria-label="Scroll shelf left">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="icon-btn" id="shelfNext" type="button" aria-label="Scroll shelf right">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+          <a href="catalog.html">View all books</a>
+        </div>
       </div>
       <div class="shelf" id="shelf"><p>Loading books...</p></div>
     </section>
 
-        <section class="container section reveal"></section>
-           <div class="section-head"><h2>Browse by <em>category</em></h2></div>
+    <section class="container section reveal">
+      <div class="section-head"><h2>Browse by <em>category</em></h2></div>
       <ul class="cat-list" id="catList"></ul>
     </section>
 
-        <section class="container section reveal"></section>
-            <div class="section-head"><h2>How borrowing <em>works</em></h2></div>
+    <section class="container section reveal">
+      <div class="section-head"><h2>How borrowing <em>works</em></h2></div>
       <ol class="steps">
         <li class="step"><span class="step__num">1</span><h3>Find a book</h3><p>Search by title or author, or browse a category, and check that it is available.</p></li>
         <li class="step"><span class="step__num">2</span><h3>Visit the library desk</h3><p>Tell the librarian which book you would like to borrow.</p></li>
@@ -97,7 +113,9 @@
   <script src="js/api.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/nav.js"></script>
-    <script src="js/motion.js"></script>
+  <script src="js/motion.js"></script>
+  <script src="js/fx.js"></script>
+  <script src="js/hero3d.js"></script>
   <script src="js/home.js"></script>
 </body>
 </html>

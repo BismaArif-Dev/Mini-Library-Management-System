@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Catalog | CampusShelf</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
@@ -63,7 +64,20 @@
       <div class="grid-books" id="grid"></div>
     </div>
   </main>
-
+  <dialog class="dialog dialog--detail" id="detailDlg" aria-labelledby="dTitle">
+    <div class="detail">
+      <div class="detail__cover" id="dCover"></div>
+      <div class="detail__body">
+        <p class="label" id="dCat"></p>
+        <h2 id="dTitle"></h2>
+        <p class="detail__author" id="dAuthor"></p>
+        <p id="dStatus"></p>
+        <p id="dDesc"></p>
+        <p class="detail__note" id="dNote"></p>
+        <button class="btn btn-secondary" id="dClose" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
   <footer class="footer">
     <div class="container footer__inner">
       <div>
