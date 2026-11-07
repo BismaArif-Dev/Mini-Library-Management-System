@@ -8,6 +8,8 @@ const CAT_COLORS = {
   'Psychology': '#2F6B6B',
   'Mathematics': '#4A4F5C',
   'General': '#5E564B',
+    'Literature': '#5B3A55',
+  'Islamic & Pakistan Studies': '#6B4A2B',
 };
 
 function esc(s) {
