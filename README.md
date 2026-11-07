@@ -1,5 +1,6 @@
+   
 # CampusShelf: Mini Library Management System
-
+**Live demo:** https://campus-shelf.onrender.com  (first load may take up to a minute)
 A small integrated library system built with object-oriented design.
 It manages books and two kinds of members (students and teachers),
 with a web interface on top of a Node.js backend.
