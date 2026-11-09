@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shelf | CampusShelf</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body class="shelf-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a class="logo" href="index.html" aria-label="CampusShelf home">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        CampusShelf
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="catalog.html">Catalog</a></li>
+        <li><a class="nav-link" href="shelf.html" aria-current="page">Shelf</a></li>
+      </ul>
+      <div class="navbar__actions"></div>
+    </div>
+  </header>
+
+    <main id="main" class="shelf3d"></main>
+    <nav class="shelf3d__tabs" id="tabs" aria-label="Categories"></nav>
+    <section class="stage3d" id="stage3d" aria-label="Book shelf"></section>
+
+    <div class="shelf3d__cap" aria-live="polite">
+      <div class="mask"><p class="label" id="cCat"></p></div>
+      <div class="mask"><h2 id="cTitle">Loading...</h2></div>
+      <div class="mask"><p id="cMeta"></p></div>
+    </div>
+
+    <button class="icon-btn shelf3d__arrow shelf3d__arrow--l" id="prev" type="button" aria-label="Previous book">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button class="icon-btn shelf3d__arrow shelf3d__arrow--r" id="next" type="button" aria-label="Next book">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <p class="shelf3d__hint">Drag, scroll or use the arrow keys. Click the open book for details.</p>
+  </main>
+
+  <dialog class="dialog dialog--detail" id="detailDlg" aria-labelledby="dTitle">
+    <div class="detail">
+      <div class="detail__cover" id="dCover"></div>
+      <div class="detail__body">
+        <p class="label" id="dCat"></p>
+        <h2 id="dTitle"></h2>
+        <p class="detail__author" id="dAuthor"></p>
+        <p id="dStatus"></p>
+        <p id="dDesc"></p>
+        <p class="detail__note" id="dNote"></p>
+        <button class="btn btn-secondary" id="dClose" type="button">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/shelf.js"></script>
+</body>
+</html>
