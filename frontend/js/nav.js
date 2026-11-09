@@ -107,4 +107,17 @@
   api.me()
     .then(me => (me.admin ? showLoggedIn(me.username) : showLoggedOut()))
     .catch(showLoggedOut);
+})();// ---------- Shelf link (har page par khud lag jata hai) ----------
+(function () {
+  const list = document.querySelector('.nav-links');
+  if (!list || list.querySelector('a[href="shelf.html"]')) return;
+  const here = location.pathname.split('/').pop();
+
+  const li = document.createElement('li');
+  li.innerHTML = '<a class="nav-link" href="shelf.html"' +
+    (here === 'shelf.html' ? ' aria-current="page"' : '') + '>Shelf</a>';
+
+  const catalog = list.querySelector('a[href="catalog.html"]');
+  if (catalog && catalog.closest('li')) catalog.closest('li').after(li);
+  else list.appendChild(li);
 })();
